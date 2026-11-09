@@ -3,165 +3,377 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kirti Bots | Premium Telegram Bots</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome for Professional Icons -->
+    <title>Kirti Bots | Premium Telegram Automation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
+            --bg-color: #030712;
             --primary: #00f2fe;
             --secondary: #4facfe;
-            --bg-dark: #0f172a;
-            --card-bg: rgba(30, 41, 59, 0.7);
+            --card-bg: rgba(17, 24, 39, 0.7);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
         }
-        body {
+
+        * {
             margin: 0;
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #091221 0%, #1e2a3a 100%);
-            color: #fff;
-            min-height: 100vh;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(0, 242, 254, 0.08), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(79, 172, 254, 0.08), transparent 25%);
+            background-attachment: fixed;
+        }
+
+        /* Animated Grid Background */
+        .bg-grid {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -1;
+        }
+
+        /* Navbar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: rgba(3, 7, 18, 0.8);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .logo-container {
             display: flex;
             align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .kb-logo {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 12px;
+            display: flex;
             justify-content: center;
-            padding: 20px;
+            align-items: center;
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: #000;
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
         }
-        .container {
-            background: var(--card-bg);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 24px;
-            padding: 40px;
-            max-width: 600px;
-            width: 100%;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-            text-align: center;
-        }
-        .header img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            border: 3px solid var(--primary);
-            margin-bottom: 15px;
-            box-shadow: 0 0 20px rgba(0, 242, 254, 0.4);
-        }
-        h1 {
-            margin: 0 0 10px 0;
+
+        .logo-text {
+            font-size: 1.5rem;
             font-weight: 700;
-            font-size: 2.2rem;
+            color: var(--text-main);
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-left: 30px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 150px 5% 80px;
+            text-align: center;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .badge {
+            background: rgba(0, 242, 254, 0.1);
+            color: var(--primary);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 20px;
+            border: 1px solid rgba(0, 242, 254, 0.2);
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero h1 span {
             background: linear-gradient(to right, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .subtitle {
-            color: #94a3b8;
-            font-size: 0.95rem;
-            margin-bottom: 30px;
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
             line-height: 1.6;
         }
-        .section {
-            margin-bottom: 30px;
-            text-align: left;
-        }
-        .section-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #cbd5e1;
-            margin-bottom: 15px;
+
+        .cta-buttons {
             display: flex;
-            align-items: center;
-            gap: 10px;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            padding-bottom: 8px;
-        }
-        .section-title i {
-            color: var(--primary);
-        }
-        .btn-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
-        .btn {
-            display: flex;
-            align-items: center;
             justify-content: center;
-            gap: 10px;
-            padding: 14px 20px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 600;
-            color: #fff;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-            font-size: 0.95rem;
+            gap: 20px;
         }
-        .btn:hover {
+
+        .btn {
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary {
             background: linear-gradient(135deg, var(--secondary), var(--primary));
-            border-color: transparent;
-            transform: translateY(-3px);
+            color: #000;
             box-shadow: 0 10px 20px rgba(0, 242, 254, 0.2);
         }
-        
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(0, 242, 254, 0.4);
+        }
+
+        .btn-outline {
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--text-main);
+            border: 1px solid var(--card-border);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-3px);
+            border-color: var(--primary);
+        }
+
+        /* Section Layout */
+        .section {
+            padding: 80px 5%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        /* Grid Cards (Bots & Team) */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(20px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            opacity: 0;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(0, 242, 254, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(0, 242, 254, 0.1);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.8rem;
+            margin: 0 auto 20px;
+            border: 1px solid rgba(0, 242, 254, 0.2);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .card .btn {
+            width: 100%;
+            justify-content: center;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 5%;
+            border-top: 1px solid var(--card-border);
+            margin-top: 50px;
+            color: var(--text-muted);
+            background: rgba(3, 7, 18, 0.8);
+        }
+
         /* Mobile Responsive */
-        @media (max-width: 480px) {
-            .btn-grid {
-                grid-template-columns: 1fr;
-            }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .cta-buttons { flex-direction: column; }
+            .nav-links { display: none; }
+            .hero { padding-top: 120px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <!-- HEADER SECTION -->
-        <div class="header">
-            <!-- Profile Logo (Auto-generated Kirti Bots Logo) -->
-            <img src="https://ui-avatars.com/api/?name=Kirti+Bots&background=00f2fe&color=0f172a&size=200&bold=true" alt="Kirti Bots Logo">
-            <h1>Kirti Bots</h1>
-            <div class="subtitle">Experience high-quality music and seamless community management with our advanced Telegram bots.</div>
-        </div>
+    <div class="bg-grid"></div>
 
-        <!-- MUSIC BOTS SECTION -->
-        <div class="section">
-            <div class="section-title"><i class="fa-solid fa-music"></i> Our Music Bots</div>
-            <div class="btn-grid">
-                <a href="https://t.me/Hinduprobot" target="_blank" class="btn">
-                    <i class="fa-solid fa-robot"></i> @Hinduprobot
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="logo-container">
+            <div class="kb-logo">KB</div>
+            <div class="logo-text">Kirti Bots</div>
+        </a>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#bots">Our Bots</a>
+            <a href="#community">Community</a>
+            <a href="#team">Team</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="badge">🚀 Next-Gen Telegram Automation</div>
+        <h1>Elevate Your Group with <span>Kirti Bots</span></h1>
+        <p>Experience high-quality music and seamless community management. Powerful, reliable, and designed to keep your Telegram groups active and secure.</p>
+        <div class="cta-buttons">
+            <a href="https://t.me/kirti_bots" target="_blank" class="btn btn-primary">
+                <i class="fa-solid fa-paper-plane"></i> Join Official Channel
+            </a>
+            <a href="https://t.me/kirti_bots_support" target="_blank" class="btn btn-outline">
+                <i class="fa-solid fa-headset"></i> Get Support
+            </a>
+        </div>
+    </section>
+
+    <!-- Bots Section -->
+    <section id="bots" class="section">
+        <div class="section-header">
+            <h2>Our Powerful Bots</h2>
+            <p style="color: var(--text-muted)">Add these to your group to unlock premium features.</p>
+        </div>
+        <div class="grid-container">
+            <!-- Bot 1 -->
+            <div class="card">
+                <div class="card-icon"><i class="fa-solid fa-music"></i></div>
+                <h3>Hinduprobot</h3>
+                <p>High-quality, lag-free music streaming for your voice chats. Supports multiple platforms and playlists.</p>
+                <a href="https://t.me/Hinduprobot" target="_blank" class="btn btn-outline">
+                    <i class="fa-solid fa-robot"></i> Start @Hinduprobot
                 </a>
-                <a href="https://t.me/Kirtiprobot" target="_blank" class="btn">
-                    <i class="fa-solid fa-robot"></i> @Kirtiprobot
+            </div>
+            <!-- Bot 2 -->
+            <div class="card">
+                <div class="card-icon"><i class="fa-solid fa-compact-disc"></i></div>
+                <h3>Kirtiprobot</h3>
+                <p>Advanced music and management features to keep your community engaged and entertained.</p>
+                <a href="https://t.me/Kirtiprobot" target="_blank" class="btn btn-outline">
+                    <i class="fa-solid fa-robot"></i> Start @Kirtiprobot
                 </a>
             </div>
         </div>
+    </section>
 
-        <!-- COMMUNITY SECTION -->
-        <div class="section">
-            <div class="section-title"><i class="fa-solid fa-users"></i> Community & Support</div>
-            <div class="btn-grid">
-                <a href="https://t.me/kirti_bots" target="_blank" class="btn">
-                    <i class="fa-solid fa-bullhorn"></i> Channel
-                </a>
-                <a href="https://t.me/kirti_bots_support" target="_blank" class="btn">
-                    <i class="fa-solid fa-headset"></i> Support Group
+    <!-- Team Section -->
+    <section id="team" class="section">
+        <div class="section-header">
+            <h2>Meet the Developer</h2>
+        </div>
+        <div class="grid-container" style="max-width: 500px; margin: auto;">
+            <div class="card">
+                <div class="card-icon" style="background: rgba(255, 255, 255, 0.1); color: #fff; border-color: rgba(255,255,255,0.2);">
+                    <i class="fa-solid fa-code"></i>
+                </div>
+                <h3>ll_Alone_lll</h3>
+                <p>Owner & Lead Developer of Kirti Bots. Building fast and reliable Telegram infrastructure.</p>
+                <a href="https://t.me/ll_Alone_lll" target="_blank" class="btn btn-primary" style="background: #fff; color: #000; box-shadow: 0 10px 20px rgba(255,255,255,0.2);">
+                    <i class="fa-brands fa-telegram"></i> Contact Developer
                 </a>
             </div>
         </div>
+    </section>
 
-        <!-- TEAM SECTION -->
-        <div class="section">
-            <div class="section-title"><i class="fa-solid fa-shield-halved"></i> Team</div>
-            <div class="btn-grid">
-                <a href="https://t.me/ll_Alone_lll" target="_blank" class="btn">
-                    <i class="fa-solid fa-crown"></i> Owner
-                </a>
-                <a href="https://t.me/ll_Alone_lll" target="_blank" class="btn">
-                    <i class="fa-solid fa-code"></i> Developer
-                </a>
-            </div>
-        </div>
-    </div>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Kirti Bots. All rights reserved. Developed by ll_Alone_lll.</p>
+    </footer>
 
 </body>
 </html>
