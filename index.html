@@ -3,26 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kirti Bots | Advanced Telegram Infrastructure</title>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Kirti Bots | Premium Telegram Hosting & Bots</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --bg-base: #050505;
-            --bg-surface: #111111;
-            --primary: #00f2fe;
-            --secondary: #4facfe;
-            --accent: #8b5cf6;
-            --text-main: #ffffff;
-            --text-muted: #a1a1aa;
-            --border-color: rgba(255, 255, 255, 0.05);
+            --bg-base: #030712;
+            --bg-card: #0f172a;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --primary: #06b6d4;
+            --primary-glow: rgba(6, 182, 212, 0.3);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Space Grotesk', sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
             scroll-behavior: smooth;
         }
 
@@ -30,39 +29,16 @@
             background-color: var(--bg-base);
             color: var(--text-main);
             overflow-x: hidden;
-            position: relative;
+            background-image: radial-gradient(circle at 50% 0%, rgba(6, 182, 212, 0.07), transparent 40%);
         }
 
-        /* Modern Animated Background */
-        .ambient-bg {
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            z-index: -1;
-            background: 
-                radial-gradient(circle at 15% 50%, rgba(0, 242, 254, 0.05), transparent 40%),
-                radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.05), transparent 40%);
-            filter: blur(60px);
-        }
-
-        .grid-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            background-image: 
-                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-            background-size: 40px 40px;
-            z-index: -1;
-            mask-image: linear-gradient(to bottom, transparent, black, transparent);
-            -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 20%, rgba(0,0,0,0.1) 100%);
-        }
-
-        /* Minimal Navbar */
+        /* Navbar */
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 20px 8%;
-            background: rgba(5, 5, 5, 0.7);
+            background: rgba(3, 7, 18, 0.85);
             backdrop-filter: blur(12px);
             position: fixed;
             width: 100%;
@@ -71,353 +47,406 @@
             border-bottom: 1px solid var(--border-color);
         }
 
-        .logo-container {
+        .logo {
             display: flex;
             align-items: center;
             gap: 12px;
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: #fff;
             text-decoration: none;
         }
 
-        .kb-logo {
+        .logo-badge {
             width: 40px;
             height: 40px;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+            background: linear-gradient(135deg, var(--primary), #3b82f6);
             border-radius: 10px;
             display: flex;
-            justify-content: center;
             align-items: center;
-            font-weight: 700;
-            font-size: 1.1rem;
-            color: #fff;
-            box-shadow: 0 0 20px rgba(0, 242, 254, 0.3);
+            justify-content: center;
+            color: #030712;
+            font-weight: 800;
+            box-shadow: 0 0 20px var(--primary-glow);
         }
 
-        .logo-text {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--text-main);
-            letter-spacing: -0.5px;
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            padding: 10px 20px;
+            border-radius: 8px;
+            color: #fff;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .nav-btn:hover {
+            background: var(--primary);
+            color: #030712;
+            border-color: var(--primary);
+            box-shadow: 0 0 15px var(--primary-glow);
         }
 
         /* Hero Section */
         .hero {
-            padding: 180px 5% 100px;
+            padding: 160px 8% 80px;
             text-align: center;
-            max-width: 1000px;
-            margin: auto;
-            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
         }
 
-        .status-badge {
-            background: rgba(0, 242, 254, 0.05);
-            color: var(--primary);
-            padding: 8px 16px;
-            border-radius: 100px;
-            font-size: 0.85rem;
-            font-weight: 600;
+        .hero-tag {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            margin-bottom: 30px;
-            border: 1px solid rgba(0, 242, 254, 0.2);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            background: var(--primary);
-            border-radius: 50%;
-            box-shadow: 0 0 10px var(--primary);
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 242, 254, 0.7); }
-            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(0, 242, 254, 0); }
-            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 242, 254, 0); }
+            background: rgba(6, 182, 212, 0.1);
+            color: var(--primary);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid rgba(6, 182, 212, 0.2);
+            margin-bottom: 24px;
         }
 
         .hero h1 {
-            font-size: 4.5rem;
-            font-weight: 700;
-            line-height: 1.1;
-            margin-bottom: 25px;
-            letter-spacing: -2px;
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
         }
 
-        .text-gradient {
-            background: linear-gradient(to right, #fff, #a1a1aa);
+        .hero h1 span {
+            background: linear-gradient(to right, var(--primary), #3b82f6);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-        }
-
-        .text-glow {
-            background: linear-gradient(to right, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            position: relative;
         }
 
         .hero p {
-            font-size: 1.25rem;
             color: var(--text-muted);
-            margin-bottom: 50px;
+            font-size: 1.15rem;
             line-height: 1.6;
-            max-width: 700px;
-            margin-inline: auto;
+            margin-bottom: 40px;
         }
 
-        .btn {
-            padding: 16px 36px;
-            border-radius: 12px;
-            font-weight: 600;
-            text-decoration: none;
-            font-size: 1.05rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            cursor: pointer;
-        }
-
-        .btn-primary {
-            background: var(--text-main);
-            color: var(--bg-base);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            background: #e4e4e7;
-            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
-        }
-
-        .btn-glow {
-            background: transparent;
-            color: var(--text-main);
-            border: 1px solid rgba(0, 242, 254, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-glow::before {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%; width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 242, 254, 0.2), transparent);
-            transition: 0.5s;
-        }
-
-        .btn-glow:hover::before {
-            left: 100%;
-        }
-
-        .btn-glow:hover {
-            border-color: var(--primary);
-            box-shadow: 0 0 20px rgba(0, 242, 254, 0.2);
-            transform: translateY(-2px);
-        }
-
-        /* Bento Grid Sections */
-        .section {
-            padding: 60px 5%;
-            max-width: 1200px;
-            margin: auto;
-        }
-
-        .bento-grid {
+        /* Stats Bar */
+        .stats-container {
             display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            gap: 24px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto 80px;
+            padding: 0 5%;
         }
 
-        .bento-card {
-            background: var(--bg-surface);
+        .stat-card {
+            background: var(--bg-card);
             border: 1px solid var(--border-color);
-            border-radius: 24px;
-            padding: 40px;
+            padding: 20px;
+            border-radius: 16px;
+            text-align: center;
+        }
+
+        .stat-card h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .stat-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Section Title */
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+        }
+
+        /* Pricing / Service Cards Grid */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 5% 80px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 35px;
             position: relative;
-            overflow: hidden;
-            transition: all 0.4s ease;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
-        .bento-card:hover {
-            border-color: rgba(255, 255, 255, 0.15);
+        .card:hover {
+            border-color: rgba(6, 182, 212, 0.4);
             transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
 
-        .bento-card::after {
-            content: '';
+        .card-badge {
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.06), transparent 40%);
-            opacity: 0;
-            transition: opacity 0.3s;
-            pointer-events: none;
+            top: 25px;
+            right: 25px;
+            background: rgba(6, 182, 212, 0.1);
+            color: var(--primary);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 6px;
+            border: 1px solid rgba(6, 182, 212, 0.2);
+            text-transform: uppercase;
         }
-
-        .bento-card:hover::after {
-            opacity: 1;
-        }
-
-        .col-span-6 { grid-column: span 6; }
-        .col-span-4 { grid-column: span 4; }
-        .col-span-8 { grid-column: span 8; }
-        .col-span-12 { grid-column: span 12; }
 
         .card-icon {
-            width: 60px;
-            height: 60px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.5rem;
+            width: 55px;
+            height: 55px;
+            background: rgba(6, 182, 212, 0.1);
             color: var(--primary);
-            margin-bottom: 24px;
-        }
-
-        .bento-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 12px;
-            color: var(--text-main);
-        }
-
-        .bento-card p {
-            color: var(--text-muted);
-            line-height: 1.6;
-            margin-bottom: 24px;
-        }
-
-        /* Developer Badge Style */
-        .tech-stack {
+            border-radius: 14px;
             display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-top: 15px;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
             margin-bottom: 25px;
         }
 
-        .tech-badge {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border-color);
-            padding: 6px 12px;
-            border-radius: 8px;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            display: flex;
-            align-items: center;
-            gap: 6px;
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
         }
 
-        /* Mobile Responsive */
-        @media (max-width: 900px) {
-            .hero h1 { font-size: 3rem; }
-            .col-span-6, .col-span-4, .col-span-8 { grid-column: span 12; }
-            .hero { padding-top: 140px; }
-            .bento-card { padding: 30px; }
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .features-list li {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .features-list li i {
+            color: var(--primary);
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, var(--primary), #3b82f6);
+            color: #030712;
+            font-weight: 700;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+            box-shadow: 0 0 20px var(--primary-glow);
+            transform: translateY(-2px);
+        }
+
+        /* Developer Section Card */
+        .dev-card {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            max-width: 600px;
+            margin: 40px auto 0;
+        }
+
+        .dev-avatar {
+            width: 80px;
+            height: 80px;
+            background: var(--primary);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #030712;
+            font-weight: 800;
+            box-shadow: 0 0 25px var(--primary-glow);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 8%;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .stats-container { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <div class="ambient-bg"></div>
-    <div class="grid-overlay"></div>
-
-    <!-- Navigation -->
+    <!-- Navbar -->
     <nav>
-        <a href="#" class="logo-container">
-            <div class="kb-logo">KB</div>
-            <div class="logo-text">Kirti Bots</div>
+        <a href="#" class="logo">
+            <div class="logo-badge">KB</div>
+            Kirti Bots
         </a>
+        <a href="https://t.me/kirti_bots" target="_blank" class="nav-btn">Join Channel</a>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="status-badge">
-            <div class="status-dot"></div>
-            Systems Online & Operational
+        <div class="hero-tag">
+            <i class="fa-solid fa-circle-check" style="color: var(--primary);"></i> Trusted Telegram Solutions
         </div>
-        <h1 class="text-gradient">Automate Your Groups.<br><span class="text-glow">Elevate Your Community.</span></h1>
-        <p>Deploy enterprise-grade Telegram bots designed for high-performance music streaming and seamless group management architecture.</p>
-        <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
-            <a href="https://t.me/kirti_bots" target="_blank" class="btn btn-primary">
-                <i class="fa-solid fa-rocket"></i> Join Official Channel
-            </a>
-            <a href="https://t.me/kirti_bots_support" target="_blank" class="btn btn-glow">
-                <i class="fa-brands fa-telegram"></i> Community Support
-            </a>
-        </div>
+        <h1>High-Performance Music & <span>Management Bots</span></h1>
+        <p>Deploy lightning-fast music bots and advanced group security systems to scale your Telegram communities seamlessly.</p>
     </section>
 
-    <!-- Bento Grid Section -->
-    <section class="section">
-        <div class="bento-grid">
-            
-            <!-- Music Bot 1 -->
-            <div class="bento-card col-span-6">
-                <div class="card-icon" style="color: #4facfe;"><i class="fa-solid fa-headphones-simple"></i></div>
-                <h3>Hinduprobot</h3>
-                <p>High-fidelity audio streaming infrastructure for voice chats. Zero lag, maximum uptime, and multi-platform playlist support.</p>
-                <a href="https://t.me/Hinduprobot" target="_blank" class="btn btn-glow" style="width: 100%; justify-content: center; font-size: 0.95rem; padding: 12px;">
-                    Start @Hinduprobot <i class="fa-solid fa-arrow-right"></i>
-                </a>
-            </div>
+    <!-- Stats Bar -->
+    <div class="stats-container">
+        <div class="stat-card">
+            <h3>99.9%</h3>
+            <p>Uptime Guarantee</p>
+        </div>
+        <div class="stat-card">
+            <h3>24/7</h3>
+            <p>Active Support</p>
+        </div>
+        <div class="stat-card">
+            <h3>Fast</h3>
+            <p>Lightning Speed</p>
+        </div>
+    </div>
 
-            <!-- Music Bot 2 -->
-            <div class="bento-card col-span-6">
-                <div class="card-icon" style="color: #8b5cf6;"><i class="fa-solid fa-compact-disc"></i></div>
-                <h3>Kirtiprobot</h3>
-                <p>Advanced community management intertwined with premium music capabilities. Keep your groups engaged and fully automated.</p>
-                <a href="https://t.me/Kirtiprobot" target="_blank" class="btn btn-glow" style="width: 100%; justify-content: center; font-size: 0.95rem; padding: 12px;">
-                    Start @Kirtiprobot <i class="fa-solid fa-arrow-right"></i>
-                </a>
-            </div>
+    <!-- Bots & Services Section -->
+    <div class="container">
+        <div class="section-title">
+            <h2>Our Featured Bots</h2>
+            <p>Click below to start using our high-speed bots in your groups.</p>
+        </div>
 
-            <!-- Developer Profile Card (Badnam) -->
-            <div class="bento-card col-span-12" style="background: linear-gradient(145deg, var(--bg-surface), #0a0a0a); display: flex; flex-direction: column; align-items: center; text-align: center; padding: 50px 30px;">
-                <img src="https://ui-avatars.com/api/?name=Badnam&background=random&color=fff&size=150&font-size=0.33&bold=true" alt="Badnam" style="width: 90px; height: 90px; border-radius: 50%; border: 2px solid var(--border-color); margin-bottom: 20px;">
-                
-                <h3 style="font-size: 2rem; margin-bottom: 5px;">Badnam</h3>
-                <p style="color: var(--primary); font-weight: 600; font-size: 0.95rem; letter-spacing: 1px; margin-bottom: 10px;">FOUNDER & LEAD ARCHITECT</p>
-                
-                <p style="max-width: 600px; margin: 0 auto 15px;">Building scalable Telegram infrastructure, high-performance bots, and robust backend systems.</p>
-                
-                <!-- Professional Tech Stack Badges -->
-                <div class="tech-stack">
-                    <div class="tech-badge"><i class="fa-brands fa-python"></i> Python</div>
-                    <div class="tech-badge"><i class="fa-brands fa-golang"></i> Golang</div>
-                    <div class="tech-badge"><i class="fa-solid fa-database"></i> MongoDB</div>
-                    <div class="tech-badge"><i class="fa-solid fa-server"></i> Vercel</div>
+        <div class="grid">
+            <!-- Bot 1 -->
+            <div class="card">
+                <div class="card-badge">Popular</div>
+                <div>
+                    <div class="card-icon"><i class="fa-solid fa-music"></i></div>
+                    <h3>@Hinduprobot</h3>
+                    <p>Lag-free and high quality music streaming for your voice chats with extensive playlist controls.</p>
+                    <ul class="features-list">
+                        <li><i class="fa-solid fa-check"></i> HD Audio Streaming</li>
+                        <li><i class="fa-solid fa-check"></i> Multi-Platform Support</li>
+                        <li><i class="fa-solid fa-check"></i> 24/7 Voice Chat Playback</li>
+                    </ul>
                 </div>
-
-                <a href="https://t.me/ll_Alone_lll" target="_blank" class="btn btn-primary" style="margin-top: 10px;">
-                    <i class="fa-solid fa-code"></i> Contact Developer
+                <a href="https://t.me/Hinduprobot" target="_blank" class="btn">
+                    <i class="fa-solid fa-robot"></i> Start Bot
                 </a>
             </div>
 
+            <!-- Bot 2 -->
+            <div class="card">
+                <div class="card-badge">Active</div>
+                <div>
+                    <div class="card-icon"><i class="fa-solid fa-compact-disc"></i></div>
+                    <h3>@Kirtiprobot</h3>
+                    <p>Advanced group management and secondary music utility designed for smooth community interactions.</p>
+                    <ul class="features-list">
+                        <li><i class="fa-solid fa-check"></i> Instant Response Time</li>
+                        <li><i class="fa-solid fa-check"></i> Secure Architecture</li>
+                        <li><i class="fa-solid fa-check"></i> Easy Group Setup</li>
+                    </ul>
+                </div>
+                <a href="https://t.me/Kirtiprobot" target="_blank" class="btn">
+                    <i class="fa-solid fa-robot"></i> Start Bot
+                </a>
+            </div>
         </div>
-    </section>
+
+        <!-- Community & Support Card -->
+        <div class="grid" style="margin-top: 30px;">
+            <div class="card">
+                <div>
+                    <div class="card-icon"><i class="fa-solid fa-bullhorn"></i></div>
+                    <h3>Updates Channel</h3>
+                    <p>Stay tuned with all upcoming features, updates, and announcements regarding Kirti Bots.</p>
+                </div>
+                <a href="https://t.me/kirti_bots" target="_blank" class="btn">
+                    <i class="fa-solid fa-paper-plane"></i> Join Channel
+                </a>
+            </div>
+            <div class="card">
+                <div>
+                    <div class="card-icon"><i class="fa-solid fa-headset"></i></div>
+                    <h3>Support Group</h3>
+                    <p>Facing issues? Join our support group to get quick assistance from the community and team.</p>
+                </div>
+                <a href="https://t.me/kirti_bots_support" target="_blank" class="btn">
+                    <i class="fa-solid fa-users"></i> Join Support
+                </a>
+            </div>
+        </div>
+
+        <!-- Developer Section -->
+        <div class="dev-card">
+            <div class="dev-avatar">B</div>
+            <h3>BADNAM</h3>
+            <p style="color: var(--primary); font-weight: 600; font-size: 0.9rem; margin-bottom: 10px;">FOUNDER & DEVELOPER</p>
+            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 25px;">Architect behind Kirti Bots infrastructure, ensuring seamless performance and continuous updates.</p>
+            <a href="https://t.me/ll_Alone_lll" target="_blank" class="btn" style="max-width: 250px; margin: 0 auto;">
+                <i class="fa-solid fa-code"></i> Contact Owner
+            </a>
+        </div>
+    </div>
 
     <!-- Footer -->
-    <footer style="text-align: center; padding: 40px 5%; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.9rem; margin-top: 40px;">
-        <p>&copy; 2026 Kirti Bots Infrastructure. Engineered by Badnam.</p>
+    <footer>
+        <p>&copy; 2026 Kirti Bots. All rights reserved. Engineered by Badnam.</p>
     </footer>
 
-    <!-- Interactive Card Glow Script -->
-    <script>
-        document.querySelectorAll('.bento-card').forEach(card => {
-            card.addEventListener('mousemove', e => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                card.style.setProperty('--mouse-x', `${x}px`);
-                card.style.setProperty('--mouse-y', `${y}px`);
-            });
-        });
-    </script>
 </body>
 </html>
